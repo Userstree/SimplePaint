@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F884371FEAAEC6537BDAC34C /* ToolbarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8843AC5003DA0A6185A3D2B /* ToolbarVC.swift */; };
 		F8843A0A50861390B3CE8ED4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88438F64FF2E170ABBA2F12 /* SceneDelegate.swift */; };
 		F8843A3A89ADA7E229CC1FE9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8843E7434DA470D90DC9F1C /* ViewController.swift */; };
 		F8843B0BE6924D38D33788B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8843A5311EF7E7079186D3B /* AppDelegate.swift */; };
@@ -22,7 +21,6 @@
 		F88438167693CF9242D7BED1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		F88438F64FF2E170ABBA2F12 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F8843A5311EF7E7079186D3B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F8843AC5003DA0A6185A3D2B /* ToolbarVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolbarVC.swift; sourceTree = "<group>"; };
 		F8843E7434DA470D90DC9F1C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F8843F04E28FA6F093D41117 /* SimplePaint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplePaint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8843FC96E157335354EBE66 /* ToolBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
@@ -75,7 +73,6 @@
 			isa = PBXGroup;
 			children = (
 				F8843E7434DA470D90DC9F1C /* ViewController.swift */,
-				F8843AC5003DA0A6185A3D2B /* ToolbarVC.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -184,7 +181,6 @@
 				F8843B0BE6924D38D33788B4 /* AppDelegate.swift in Sources */,
 				F8843A0A50861390B3CE8ED4 /* SceneDelegate.swift in Sources */,
 				F8843A3A89ADA7E229CC1FE9 /* ViewController.swift in Sources */,
-				F884371FEAAEC6537BDAC34C /* ToolbarVC.swift in Sources */,
 				F8843B9CA8950D0626C839B7 /* ToolBarView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
