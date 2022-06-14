@@ -11,29 +11,67 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    private var toolbar = ToolBarView()
+    var allColorsForCards: [UIColor] = [.blue, .red, .green]
+
+    private var toolbar: ToolBarView = {
+        
+        let bar = ToolBarView()
+        bar.translatesAutoresizingMaskIntoConstraints = false
+
+        bar.layer.cornerRadius = 16
+        return bar
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .red
+        view.backgroundColor = .white
+        configureViews()
+        configureToolbar()
     }
 
     private func configureToolbar() {
         toolbar.subscribeToCollectionView(with: self)
-        toolbar.addEraseButtonTarget(<#T##target: Any?##Any?#>, action: <#T##Selector##ObjectiveC.Selector#>)
-        toolbar.addIsFilledToggleTarget(<#T##target: Any?##Any?#>, action: <#T##Selector##ObjectiveC.Selector#>)
+        toolbar.addEraseButtonTarget(self, action: #selector(didEraseButtonTapped))
+        toolbar.addIsFilledToggleTarget(self, action: #selector(didFilledToggleTapped))
+    }
+    
+    @objc private func didEraseButtonTapped() {
+        print("erase button tapped")
+    }
+
+    @objc private func didFilledToggleTapped() {
+        print("toggle tapped")
+    }
+
+    private func configureViews() {
+        view.addSubview(toolbar)
+        makeConstraints()
+    }
+
+    private func makeConstraints() {
+        NSLayoutConstraint.activate([
+            toolbar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            toolbar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
+            toolbar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
+            toolbar.heightAnchor.constraint(equalToConstant: 145)
+        ])
     }
 }
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
+        allColorsForCards.count
     }
+
+    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        CGSize(width: 40, height: 50)
+}
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ColoredCardItem.identifier, for: indexPath) as! ColoredCardItem
+        cell.card.backgroundColor = allColorsForCards[indexPath.item]
+        return cell
     }
-
-
 }
+

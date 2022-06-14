@@ -16,48 +16,60 @@ class ToolBarView: UIView {
 
     convenience init() {
         self.init(frame: .zero)
-
+        addViews()
     }
 
-    lazy private var circleButton: UIButton = {
-        let button = UIButton()
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        addViews()
+    }
 
+    private var circleButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "circle.fill"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
-    lazy private var rectangleButton: UIButton = {
+    private var rectangleButton: UIButton = {
         let button = UIButton()
-
+        button.setImage(UIImage(systemName: "rectangle.fill"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
-    lazy private var lineButton: UIButton = {
+    private var lineButton: UIButton = {
         let button = UIButton()
-
+        button.setImage(UIImage(systemName: "line.diagonal"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
-    lazy private var triangleButton: UIButton = {
+    private var triangleButton: UIButton = {
         let button = UIButton()
-
+        button.setImage(UIImage(systemName: "triangle.fill"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
-    lazy private var pencilButton: UIButton = {
+    private var pencilButton: UIButton = {
         let button = UIButton()
-
+        button.setImage(UIImage(systemName: "pencil"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
-    lazy private var isFilledLabel: UILabel = {
+    private var isFilledLabel: UILabel = {
         let label = UILabel()
         label.text = "Fill"
+        label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    lazy private var isFilledToggle: UISwitch = {
+    private var isFilledToggle: UISwitch = {
         let toggle = UISwitch(frame: .zero)
         toggle.isOn = false
+        toggle.translatesAutoresizingMaskIntoConstraints = false
         return toggle
     }()
 
@@ -68,18 +80,23 @@ class ToolBarView: UIView {
     private var colorsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
+
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.register(ColoredCardItem.self, forCellWithReuseIdentifier: ColoredCardItem.identifier)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .blue
         return collectionView
     }()
 
     func subscribeToCollectionView(with viewController: UIViewController) {
-        colorsCollectionView.delegate   = viewController as? UICollectionViewDelegate
-        colorsCollectionView.dataSource = viewController as? UICollectionViewDataSource
+        colorsCollectionView.delegate = viewController as! UICollectionViewDelegate
+        colorsCollectionView.dataSource = viewController as! UICollectionViewDataSource
     }
 
-    lazy private var eraseButton: UIButton = {
+    private var eraseButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "arrow.uturn.backward"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
@@ -87,17 +104,19 @@ class ToolBarView: UIView {
         eraseButton.addTarget(target, action: action, for: .touchUpInside)
     }
 
-    lazy private var buttonsHStack: UIStackView = {
+    private var buttonsHStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .equalCentering
         return stack
     }()
 
-    lazy private var mainHStack: UIStackView = {
+    private var mainHStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
-        stack.distribution = .equalCentering
+        stack.distribution = .fillEqually
+        stack.alignment = .center
+        stack.translatesAutoresizingMaskIntoConstraints = false
         return stack
     }()
 
@@ -109,14 +128,15 @@ class ToolBarView: UIView {
          isFilledToggle, colorsCollectionView, eraseButton].forEach(mainHStack.addArrangedSubview)
 
         addSubview(mainHStack)
+        makeConstraints()
     }
 
     private func makeConstraints() {
         NSLayoutConstraint.activate([
-            mainHStack.topAnchor.constraint(equalTo: self.topAnchor),
-            mainHStack.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            mainHStack.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            mainHStack.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            mainHStack.topAnchor.constraint(equalTo: topAnchor),
+            mainHStack.leadingAnchor.constraint(equalTo: leadingAnchor),
+            mainHStack.trailingAnchor.constraint(equalTo: trailingAnchor),
+            mainHStack.bottomAnchor.constraint(equalTo: bottomAnchor)
         ])
     }
 }
