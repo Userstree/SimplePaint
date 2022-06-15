@@ -11,66 +11,119 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var allColorsForCards: [UIColor] = [.blue, .red, .green]
+    var allColorsForCards: [UIColor] = [.blue, .red, .green, .orange, .gray, .black]
 
-    private var toolbar: ToolBarView = {
-        
-        let bar = ToolBarView()
-        bar.translatesAutoresizingMaskIntoConstraints = false
+    private var circleButton = DrawTools.circleButton.view
+    private var rectangleButton = DrawTools.rectangleButton.view
+    private var lineButton = DrawTools.lineButton.view
+    private var triangleButton = DrawTools.triangleButton.view
+    private var pencilButton = DrawTools.pencilButton.view
 
-        bar.layer.cornerRadius = 16
-        return bar
+    private lazy var drawingToolsStack: UIStackView = {
+        let elements = [circleButton, rectangleButton, lineButton, triangleButton, pencilButton]
+        let stack = UIStackView(viewElements: elements)
+        return stack
+    }()
+
+    private var filledLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Fill"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    private var isFilledToggle: UISwitch = {
+        let toggle = UISwitch(frame: .zero)
+        toggle.isOn = false
+        toggle.translatesAutoresizingMaskIntoConstraints = false
+        return toggle
+    }()
+
+    private lazy var toggleViewHStack: UIStackView = {
+        let elements = [filledLabel, isFilledToggle]
+        let stack = UIStackView(viewElements: elements)
+        stack.distribution = .fill
+        return stack
+    }()
+
+    private var colorsCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.register(ColoredCardItem.self, forCellWithReuseIdentifier: ColoredCardItem.identifier)
+        collectionView.showsHorizontalScrollIndicator = false
+        return collectionView
+    }()
+
+    private var eraseButton: UIButton = {
+        let button = UIButton()
+        button.setImage(UIImage(systemName: "arrow.uturn.backward"), for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.backgroundColor = .white
+        return button
+    }()
+
+    private var mainUpperHStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .horizontal
+        stack.distribution = .fillProportionally
+        stack.alignment = .center
+        stack.layoutMargins = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
+        stack.isLayoutMarginsRelativeArrangement = true
+        stack.translatesAutoresizingMaskIntoConstraints = false
+        stack.spacing = 15
+        stack.backgroundColor = .systemBackground
+        return stack
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .white
+        view.backgroundColor = .sheetBackgroundColor
         configureViews()
-        configureToolbar()
-    }
-
-    private func configureToolbar() {
-        toolbar.subscribeToCollectionView(with: self)
-        toolbar.addEraseButtonTarget(self, action: #selector(didEraseButtonTapped))
-        toolbar.addIsFilledToggleTarget(self, action: #selector(didFilledToggleTapped))
-    }
-    
-    @objc private func didEraseButtonTapped() {
-        print("erase button tapped")
-    }
-
-    @objc private func didFilledToggleTapped() {
-        print("toggle tapped")
     }
 
     private func configureViews() {
-        view.addSubview(toolbar)
+        colorsCollectionView.delegate = self
+        colorsCollectionView.dataSource = self
+
+        [drawingToolsStack, toggleViewHStack, colorsCollectionView, eraseButton].forEach(mainUpperHStack.addArrangedSubview)
+
+        view.addSubview(mainUpperHStack)
         makeConstraints()
     }
 
     private func makeConstraints() {
         NSLayoutConstraint.activate([
-            toolbar.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            toolbar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 10),
-            toolbar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -10),
-            toolbar.heightAnchor.constraint(equalToConstant: 145)
+            mainUpperHStack.topAnchor.constraint(equalTo: view.topAnchor),
+            mainUpperHStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            mainUpperHStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            mainUpperHStack.heightAnchor.constraint(equalToConstant: 105),
+
+            colorsCollectionView.widthAnchor.constraint(equalToConstant: 270),
+            colorsCollectionView.heightAnchor.constraint(equalToConstant: 50),
+
+            drawingToolsStack.widthAnchor.constraint(equalToConstant: 340),
+            drawingToolsStack.heightAnchor.constraint(equalToConstant: 50),
+            
+            toggleViewHStack.heightAnchor.constraint(equalToConstant: 50),
+            eraseButton.heightAnchor.constraint(equalToConstant: 50),
         ])
     }
 }
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         allColorsForCards.count
     }
 
-    public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: 40, height: 50)
-}
-
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ColoredCardItem.identifier, for: indexPath) as! ColoredCardItem
-        cell.card.backgroundColor = allColorsForCards[indexPath.item]
+        let cardBackgroundColor = allColorsForCards[indexPath.item]
+        cell.configure(with: cardBackgroundColor)
         return cell
     }
 }

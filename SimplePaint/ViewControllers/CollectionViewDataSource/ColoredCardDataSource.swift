@@ -51,15 +51,19 @@ enum Section {
 //    }
 //}
 
-typealias DataSource = UICollectionViewDiffableDataSource<Section, ColoredCardItem>
+typealias DataSource = UICollectionViewDiffableDataSource<Section, UIColor>
 
 //class ColorsDiffableDataSource {
 //
 //}
 
-//func makeDataSource(collectionView: UICollectionView) -> DataSource {
-//    let dataSource = DataSource(collectionView: collectionView) {
-//        (collection, indexPath, cardColor) in
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ColoredCardItem.self, for: ColoredCardItem.identifier)
-//    }
-//}
+func makeDataSource(collectionView: UICollectionView) -> DataSource {
+    let dataSource = DataSource(collectionView: collectionView) {
+        (collection, indexPath, cardColor) in
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ColoredCardItem.identifier, for: indexPath) as? ColoredCardItem
+        cell?.configure(with: cardColor)
+        return cell
+    }
+
+    return dataSource
+}

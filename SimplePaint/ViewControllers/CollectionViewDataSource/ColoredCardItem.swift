@@ -20,6 +20,7 @@ class ColoredCardItem: UICollectionViewCell {
     var card: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 6
+        button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
 
@@ -35,5 +36,9 @@ class ColoredCardItem: UICollectionViewCell {
             card.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             card.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
+    }
+
+    func configure(with color: UIColor) {
+        card.backgroundColor = color
     }
 }
