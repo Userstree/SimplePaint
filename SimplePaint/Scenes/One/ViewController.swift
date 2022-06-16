@@ -74,7 +74,7 @@ class ViewController: UIViewController {
         return collectionView
     }()
 
-    private var eraseButton: UIButton = {
+    private var undoButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "arrow.uturn.backward"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -123,8 +123,8 @@ class ViewController: UIViewController {
         }
     }
 
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        super.touchesEnded(touches, with: event)
+    @objc private func undoButtonTapped() {
+        viewModel.undo()
     }
 
     override func viewDidLoad() {
@@ -142,8 +142,9 @@ class ViewController: UIViewController {
         circleButton.addTarget(self, action: #selector(circleButtonTapped), for: .touchUpInside)
         lineButton.addTarget(self, action: #selector(lineButtonTapped), for: .touchUpInside)
         triangleButton.addTarget(self, action: #selector(triangleButtonTapped), for: .touchUpInside)
+        undoButton.addTarget(self, action: #selector(undoButtonTapped), for: .touchUpInside)
 
-        [drawingToolsStack, toggleViewHStack, colorsCollectionView, eraseButton].forEach(upperHStack.addArrangedSubview)
+        [drawingToolsStack, toggleViewHStack, colorsCollectionView, undoButton].forEach(upperHStack.addArrangedSubview)
         [upperHStack, canvas].forEach(view.addSubview)
         makeConstraints()
     }
@@ -162,7 +163,7 @@ class ViewController: UIViewController {
             drawingToolsStack.heightAnchor.constraint(equalToConstant: 50),
 
             toggleViewHStack.heightAnchor.constraint(equalToConstant: 50),
-            eraseButton.heightAnchor.constraint(equalToConstant: 50),
+            undoButton.heightAnchor.constraint(equalToConstant: 50),
         ])
 
         NSLayoutConstraint.activate([

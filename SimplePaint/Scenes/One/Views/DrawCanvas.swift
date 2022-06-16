@@ -42,7 +42,7 @@ class DrawCanvas: UIView {
 
         guard var last = touches.first?.location(in: nil) else { return }
         last.y -= 105
-        guard var lastObject = viewModel.lines.popLast() else { return }
+        guard var lastObject = viewModel.drawnLines.value.popLast() else { return }
         guard var endPoint = lastObject.points.popLast() else { return }
 
         endPoint.1 = last
@@ -51,7 +51,7 @@ class DrawCanvas: UIView {
         if lastObject.drawingTool == .pencilButton {
             lastObject.points.append((last, last))
         }
-        viewModel.lines.append(lastObject)
+        viewModel.drawnLines.value.append(lastObject)
         setNeedsDisplay()
     }
 }
