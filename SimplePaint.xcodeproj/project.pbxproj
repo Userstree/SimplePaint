@@ -16,6 +16,7 @@
 		F88435EF4D2953546FFF864E /* RectDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88432DA4C6BD552D9D936E0 /* RectDrawable.swift */; };
 		F88436286F44C9B6402370B0 /* CircleDrawService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8843B408A464C1D04D2703E /* CircleDrawService.swift */; };
 		F8843645DF45BDA1834C9217 /* PencilDrawService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88430BE71FAAB0399CA19C5 /* PencilDrawService.swift */; };
+		F88436A03D03B64A71809152 /* Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8843D4BD6BFF4D1C296F322 /* Factory.swift */; };
 		F8843756DEDC9F959FA5A3E6 /* UIStackView+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8843035B677CD66145ABFD0 /* UIStackView+ext.swift */; };
 		F884392EE97AA1177531284D /* TriangleDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8843847AD03413320F019ED /* TriangleDrawable.swift */; };
 		F884393522BB77F61D607DB2 /* TriangleDrawService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8843C7C026690320274E263 /* TriangleDrawService.swift */; };
@@ -23,6 +24,7 @@
 		F8843A0B100D87F1D9EF17F8 /* DrawTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88433A588E4AB35A45D91E0 /* DrawTools.swift */; };
 		F8843B0BE6924D38D33788B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8843A5311EF7E7079186D3B /* AppDelegate.swift */; };
 		F8843D54CB2FF032C7A3641B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88437B506F63554D6D582A9 /* Assets.xcassets */; };
+		F8843DDDA17A50724E45E22E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88436B2BDE4D680343D5E66 /* ViewModel.swift */; };
 		F8843DF57A65B6649416498C /* ColoredCardDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88436742371B7F2E55FF026 /* ColoredCardDataSource.swift */; };
 		F8843E3B226DFC14688A6C0B /* PencilDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88436839629714049B95A58 /* PencilDrawable.swift */; };
 		F8843E515AB6A1CD4593263E /* DrawCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884367618BA4AFBD1F56FF2 /* DrawCanvas.swift */; };
@@ -42,6 +44,7 @@
 		F884367618BA4AFBD1F56FF2 /* DrawCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawCanvas.swift; sourceTree = "<group>"; };
 		F88436782F5757E3D7FA2D7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F88436839629714049B95A58 /* PencilDrawable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PencilDrawable.swift; sourceTree = "<group>"; };
+		F88436B2BDE4D680343D5E66 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		F88437B506F63554D6D582A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F88438167693CF9242D7BED1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
 		F8843847AD03413320F019ED /* TriangleDrawable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleDrawable.swift; sourceTree = "<group>"; };
@@ -50,6 +53,7 @@
 		F8843A5311EF7E7079186D3B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F8843B408A464C1D04D2703E /* CircleDrawService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleDrawService.swift; sourceTree = "<group>"; };
 		F8843C7C026690320274E263 /* TriangleDrawService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleDrawService.swift; sourceTree = "<group>"; };
+		F8843D4BD6BFF4D1C296F322 /* Factory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Factory.swift; sourceTree = "<group>"; };
 		F8843DBF7EBD6E5E9AD06DDF /* ColoredCardItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColoredCardItem.swift; sourceTree = "<group>"; };
 		F8843DE31635DB27F31E499C /* CircleDrawable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleDrawable.swift; sourceTree = "<group>"; };
 		F8843EB8014039D164DC92FE /* LineDrawable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineDrawable.swift; sourceTree = "<group>"; };
@@ -88,9 +92,11 @@
 		F88431C254E9D532C1264187 /* One */ = {
 			isa = PBXGroup;
 			children = (
-				F884391B9353015B7F751551 /* ViewController.swift */,
-				F8843956D7B8EF5DFFACD22D /* CollectionViewDataSource */,
 				F884330AB77E43E9C2BA37D0 /* Views */,
+				F8843956D7B8EF5DFFACD22D /* CollectionViewDataSource */,
+				F884391B9353015B7F751551 /* ViewController.swift */,
+				F88436B2BDE4D680343D5E66 /* ViewModel.swift */,
+				F8843D4BD6BFF4D1C296F322 /* Factory.swift */,
 			);
 			path = One;
 			sourceTree = "<group>";
@@ -271,6 +277,8 @@
 				F8843645DF45BDA1834C9217 /* PencilDrawService.swift in Sources */,
 				F88434898999165ED82A7110 /* RectDrawService.swift in Sources */,
 				F884393522BB77F61D607DB2 /* TriangleDrawService.swift in Sources */,
+				F8843DDDA17A50724E45E22E /* ViewModel.swift in Sources */,
+				F88436A03D03B64A71809152 /* Factory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

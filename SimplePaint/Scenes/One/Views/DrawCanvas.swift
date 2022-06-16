@@ -4,34 +4,60 @@
 
 import UIKit
 
-protocol Drawable {
-    var color: UIColor?     { get set }
-}
-
-struct Points: Drawable {
-    var color: UIColor?
-
-}
-
-class PaintViewModel {
-    var points: UIBezierPath?
-
-}
-
 class DrawCanvas: UIView {
 
-    var strokeWidth: CGFloat = 1.0
-    var strokeColor: UIColor = .black
-    var lines = [Points]()
+    var viewModel: ViewModel
+
+    init(viewModel: ViewModel) {
+        self.viewModel = viewModel
+        super.init(frame: .zero)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    override func layoutSubviews() {
+        super.layoutSubviews()
+
+        backgroundColor = .sheetBackgroundColor
+    }
 
     override func draw(_ rect: CGRect) {
         super.draw(rect)
 
+        viewModel.lines.forEach { object in
+
+            object.color.setStroke()
+
+            object.points.forEach {  first, last in
+
+            }
+        }
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
-        lines.append(Points(color: strokeColor, points: [CGPoint]() ))
+
+        viewModel
+    }
+
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesMoved(touches, with: event)
+
+        guard let last = touches.first?.location(in: nil) else { return }
+
+        guard var lastObject = viewModel.lines.popLast() else { return }
+        guard var endPoint = lastObject.points.popLast() else { return }
+
+        endPoint.1 = last
+        lastObject.points.append(endPoint)
+
+        if lastObject.buttonType == .pencilButton {
+            lastObject.points.append((last, last))
+        }
+        viewModel.lines.append(lastObject)
+        setNeedsDisplay()
     }
 
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -17,7 +17,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = ViewController()
+
+        let factory: FactoryProtocol = Factory()
+
+        window.rootViewController = factory.make()
         window.makeKeyAndVisible()
         self.window = window
     }

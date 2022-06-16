@@ -8,9 +8,24 @@
 
 import UIKit
 
- class ViewController: UIViewController {
+class ViewController: UIViewController {
 
-    var allColorsForCards: [UIColor] = [.blue, .red, .green, .orange, .gray, .black]
+    var viewModel: ViewModel
+
+    init(viewModel: ViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private lazy var canvas: DrawCanvas = {
+        let canvas = DrawCanvas(viewModel: viewModel)
+        canvas.translatesAutoresizingMaskIntoConstraints = false
+        return canvas
+    }()
 
     private var circleButton = DrawTools.circleButton.view
     private var rectangleButton = DrawTools.rectangleButton.view
@@ -64,7 +79,7 @@ import UIKit
         return button
     }()
 
-    private var mainUpperHStack: UIStackView = {
+    private var upperHStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .fillProportionally
@@ -77,10 +92,33 @@ import UIKit
         return stack
     }()
 
+    @objc private func pencilButtonTapped() {
+        viewModel.curveType = .pencilButton
+    }
+
+    @objc private func rectButtonTapped() {
+        viewModel.curveType = .rectangleButton
+    }
+
+    @objc private func circleButtonTapped() {
+        viewModel.curveType = .circleButton
+    }
+
+    @objc private func lineButtonTapped() {
+        viewModel.curveType = .lineButton
+    }
+
+    @objc private func triangleButtonTapped() {
+        viewModel.curveType = .triangleButton
+    }
+
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .sheetBackgroundColor
         configureViews()
     }
 
@@ -88,27 +126,39 @@ import UIKit
         colorsCollectionView.delegate = self
         colorsCollectionView.dataSource = self
 
-        [drawingToolsStack, toggleViewHStack, colorsCollectionView, eraseButton].forEach(mainUpperHStack.addArrangedSubview)
+        circleButton.addTarget(self, action: #selector(pencilButtonTapped), for: .touchUpInside)
+        rectangleButton.addTarget(self, action: #selector(rectButtonTapped), for: .touchUpInside)
+        circleButton.addTarget(self, action: #selector(circleButtonTapped), for: .touchUpInside)
+        lineButton.addTarget(self, action: #selector(lineButtonTapped), for: .touchUpInside)
+        triangleButton.addTarget(self, action: #selector(triangleButtonTapped), for: .touchUpInside)
 
-        view.addSubview(mainUpperHStack)
+        [drawingToolsStack, toggleViewHStack, colorsCollectionView, eraseButton].forEach(upperHStack.addArrangedSubview)
+        [upperHStack, canvas].forEach(view.addSubview)
         makeConstraints()
     }
 
     private func makeConstraints() {
         NSLayoutConstraint.activate([
-            mainUpperHStack.topAnchor.constraint(equalTo: view.topAnchor),
-            mainUpperHStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            mainUpperHStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            mainUpperHStack.heightAnchor.constraint(equalToConstant: 105),
+            upperHStack.topAnchor.constraint(equalTo: view.topAnchor),
+            upperHStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            upperHStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            upperHStack.heightAnchor.constraint(equalToConstant: 105),
 
             colorsCollectionView.widthAnchor.constraint(equalToConstant: 270),
             colorsCollectionView.heightAnchor.constraint(equalToConstant: 50),
 
             drawingToolsStack.widthAnchor.constraint(equalToConstant: 340),
             drawingToolsStack.heightAnchor.constraint(equalToConstant: 50),
-            
+
             toggleViewHStack.heightAnchor.constraint(equalToConstant: 50),
             eraseButton.heightAnchor.constraint(equalToConstant: 50),
+        ])
+
+        NSLayoutConstraint.activate([
+            canvas.topAnchor.constraint(equalTo: upperHStack.bottomAnchor),
+            canvas.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            canvas.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            canvas.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
 }
@@ -116,12 +166,12 @@ import UIKit
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        allColorsForCards.count
+        viewModel.allColorsForCards.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ColoredCardItem.identifier, for: indexPath) as! ColoredCardItem
-        let cardBackgroundColor = allColorsForCards[indexPath.item]
+        let cardBackgroundColor = viewModel.allColorsForCards[indexPath.item]
         cell.configure(with: cardBackgroundColor)
         return cell
     }

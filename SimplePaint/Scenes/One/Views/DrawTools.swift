@@ -57,3 +57,39 @@ extension DrawTools {
         }
     }
 }
+
+extension  DrawTools: Drawable {
+    func drawCurve(firstPoint: CGPoint, finalPoint: CGPoint, path:inout UIBezierPath) -> UIBezierPath {
+        switch self {
+        case .pencilButton:
+            path.move(to: firstPoint)
+            path.addLine(to: finalPoint)
+            return path
+
+        case .circleButton:
+            path = UIBezierPath(ovalIn: CGRect(x: firstPoint.x,
+                    y: firstPoint.y,
+                    width: finalPoint.x - firstPoint.x,
+                    height: finalPoint.y - firstPoint.y))
+            return path
+
+        case .triangleButton:
+            let middlePoint = CGPoint(x: firstPoint.x, y: finalPoint.y)
+
+            path.move(to: firstPoint)
+            path.addLine(to: middlePoint)
+            path.addLine(to: finalPoint)
+            path.close()
+            return path
+
+        case .rectangleButton:
+            path = UIBezierPath(rect: CGRect(x: firstPoint.x, y: firstPoint.y, width: finalPoint.x - firstPoint.x, height: finalPoint.y - firstPoint.y))
+            return path
+
+        case .lineButton:
+            path.move(to: firstPoint)
+            path.addLine(to: finalPoint)
+            return path
+        }
+    }
+}
