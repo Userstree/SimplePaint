@@ -4,14 +4,17 @@
 
 import UIKit
 
-struct Points {
+protocol Drawable {
+    var color: UIColor?     { get set }
+}
+
+struct Points: Drawable {
     var color: UIColor?
-    var points: [CGPoint]?
+
 }
 
 class PaintViewModel {
-    let lines = [Points]()
-
+    var points: UIBezierPath?
 
 }
 

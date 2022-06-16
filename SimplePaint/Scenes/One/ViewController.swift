@@ -8,8 +8,7 @@
 
 import UIKit
 
-
-class ViewController: UIViewController {
+ class ViewController: UIViewController {
 
     var allColorsForCards: [UIColor] = [.blue, .red, .green, .orange, .gray, .black]
 

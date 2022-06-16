@@ -7,32 +7,52 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F884301F02F6314211DCF026 /* LineDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8843EB8014039D164DC92FE /* LineDrawable.swift */; };
+		F884308DE00708EC08CDDEE2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884391B9353015B7F751551 /* ViewController.swift */; };
 		F8843237178DA577F757CCCF /* UIColor+ ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884309C518C976F5078B319 /* UIColor+ ext.swift */; };
+		F88432957EA044B34E987CDF /* ColoredCardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8843DBF7EBD6E5E9AD06DDF /* ColoredCardItem.swift */; };
+		F8843416BC6BC16F2ECA7298 /* LineDrawService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88430F91B6D8B2C67A5461C /* LineDrawService.swift */; };
+		F88434898999165ED82A7110 /* RectDrawService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88432CD1D1BA2C1C4C10C3D /* RectDrawService.swift */; };
+		F88435EF4D2953546FFF864E /* RectDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88432DA4C6BD552D9D936E0 /* RectDrawable.swift */; };
+		F88436286F44C9B6402370B0 /* CircleDrawService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8843B408A464C1D04D2703E /* CircleDrawService.swift */; };
+		F8843645DF45BDA1834C9217 /* PencilDrawService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88430BE71FAAB0399CA19C5 /* PencilDrawService.swift */; };
 		F8843756DEDC9F959FA5A3E6 /* UIStackView+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8843035B677CD66145ABFD0 /* UIStackView+ext.swift */; };
-		F88437AFBBE1E8A8EE1C9762 /* DrawCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8843DF78C6E19D3F1D85347 /* DrawCanvas.swift */; };
-		F88438B5C9445894B5557775 /* ColoredCardItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8843B630B95B11C1F83CE5A /* ColoredCardItem.swift */; };
+		F884392EE97AA1177531284D /* TriangleDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8843847AD03413320F019ED /* TriangleDrawable.swift */; };
+		F884393522BB77F61D607DB2 /* TriangleDrawService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8843C7C026690320274E263 /* TriangleDrawService.swift */; };
 		F8843A0A50861390B3CE8ED4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88438F64FF2E170ABBA2F12 /* SceneDelegate.swift */; };
-		F8843A3A89ADA7E229CC1FE9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8843E7434DA470D90DC9F1C /* ViewController.swift */; };
+		F8843A0B100D87F1D9EF17F8 /* DrawTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88433A588E4AB35A45D91E0 /* DrawTools.swift */; };
 		F8843B0BE6924D38D33788B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8843A5311EF7E7079186D3B /* AppDelegate.swift */; };
 		F8843D54CB2FF032C7A3641B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88437B506F63554D6D582A9 /* Assets.xcassets */; };
-		F8843DF9E15868EE98850F67 /* DrawTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884344545A00075C527357A /* DrawTools.swift */; };
-		F8843F3CE3A90910F6A918F2 /* ColoredCardDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884327AA6CFC3AD4A55D93A /* ColoredCardDataSource.swift */; };
+		F8843DF57A65B6649416498C /* ColoredCardDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88436742371B7F2E55FF026 /* ColoredCardDataSource.swift */; };
+		F8843E3B226DFC14688A6C0B /* PencilDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88436839629714049B95A58 /* PencilDrawable.swift */; };
+		F8843E515AB6A1CD4593263E /* DrawCanvas.swift in Sources */ = {isa = PBXBuildFile; fileRef = F884367618BA4AFBD1F56FF2 /* DrawCanvas.swift */; };
+		F8843EE3C869191AA00BDE1A /* CircleDrawable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8843DE31635DB27F31E499C /* CircleDrawable.swift */; };
 		F8843FDC3E01E7BED361593B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F8843D1CB3627EEB694FD5E3 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F8843035B677CD66145ABFD0 /* UIStackView+ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIStackView+ext.swift"; sourceTree = "<group>"; };
 		F884309C518C976F5078B319 /* UIColor+ ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+ ext.swift"; sourceTree = "<group>"; };
-		F884327AA6CFC3AD4A55D93A /* ColoredCardDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColoredCardDataSource.swift; sourceTree = "<group>"; };
-		F884344545A00075C527357A /* DrawTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawTools.swift; sourceTree = "<group>"; };
+		F88430BE71FAAB0399CA19C5 /* PencilDrawService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PencilDrawService.swift; sourceTree = "<group>"; };
+		F88430F91B6D8B2C67A5461C /* LineDrawService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineDrawService.swift; sourceTree = "<group>"; };
+		F88432CD1D1BA2C1C4C10C3D /* RectDrawService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectDrawService.swift; sourceTree = "<group>"; };
+		F88432DA4C6BD552D9D936E0 /* RectDrawable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectDrawable.swift; sourceTree = "<group>"; };
+		F88433A588E4AB35A45D91E0 /* DrawTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawTools.swift; sourceTree = "<group>"; };
+		F88436742371B7F2E55FF026 /* ColoredCardDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColoredCardDataSource.swift; sourceTree = "<group>"; };
+		F884367618BA4AFBD1F56FF2 /* DrawCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawCanvas.swift; sourceTree = "<group>"; };
 		F88436782F5757E3D7FA2D7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F88436839629714049B95A58 /* PencilDrawable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PencilDrawable.swift; sourceTree = "<group>"; };
 		F88437B506F63554D6D582A9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F88438167693CF9242D7BED1 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.info; path = Info.plist; sourceTree = "<group>"; };
+		F8843847AD03413320F019ED /* TriangleDrawable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleDrawable.swift; sourceTree = "<group>"; };
 		F88438F64FF2E170ABBA2F12 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		F884391B9353015B7F751551 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		F8843A5311EF7E7079186D3B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F8843B630B95B11C1F83CE5A /* ColoredCardItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColoredCardItem.swift; sourceTree = "<group>"; };
-		F8843DF78C6E19D3F1D85347 /* DrawCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawCanvas.swift; sourceTree = "<group>"; };
-		F8843E7434DA470D90DC9F1C /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F8843B408A464C1D04D2703E /* CircleDrawService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleDrawService.swift; sourceTree = "<group>"; };
+		F8843C7C026690320274E263 /* TriangleDrawService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TriangleDrawService.swift; sourceTree = "<group>"; };
+		F8843DBF7EBD6E5E9AD06DDF /* ColoredCardItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColoredCardItem.swift; sourceTree = "<group>"; };
+		F8843DE31635DB27F31E499C /* CircleDrawable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircleDrawable.swift; sourceTree = "<group>"; };
+		F8843EB8014039D164DC92FE /* LineDrawable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LineDrawable.swift; sourceTree = "<group>"; };
 		F8843F04E28FA6F093D41117 /* SimplePaint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimplePaint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -56,13 +76,6 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		F88430F80C0A84D5AD6328CD /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
 		F88431B5C36019E7B6967FFD /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -72,20 +85,53 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		F88434C04037C1488ABD9D0B /* Models */ = {
+		F88431C254E9D532C1264187 /* One */ = {
 			isa = PBXGroup;
 			children = (
+				F884391B9353015B7F751551 /* ViewController.swift */,
+				F8843956D7B8EF5DFFACD22D /* CollectionViewDataSource */,
+				F884330AB77E43E9C2BA37D0 /* Views */,
 			);
-			path = Models;
+			path = One;
 			sourceTree = "<group>";
 		};
-		F88434CFD74D5BCDE752F64F /* ViewControllers */ = {
+		F884330AB77E43E9C2BA37D0 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F8843E7434DA470D90DC9F1C /* ViewController.swift */,
-				F8843ADBDC808D3FEBAA3D66 /* CollectionViewDataSource */,
+				F88433A588E4AB35A45D91E0 /* DrawTools.swift */,
+				F884367618BA4AFBD1F56FF2 /* DrawCanvas.swift */,
 			);
-			path = ViewControllers;
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F88434C04037C1488ABD9D0B /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				F88436839629714049B95A58 /* PencilDrawable.swift */,
+				F8843847AD03413320F019ED /* TriangleDrawable.swift */,
+				F88432DA4C6BD552D9D936E0 /* RectDrawable.swift */,
+				F8843EB8014039D164DC92FE /* LineDrawable.swift */,
+				F8843DE31635DB27F31E499C /* CircleDrawable.swift */,
+				F8843BA36041DBDAFFF18039 /* DrawServices */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		F88434CFD74D5BCDE752F64F /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				F88431C254E9D532C1264187 /* One */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		F8843956D7B8EF5DFFACD22D /* CollectionViewDataSource */ = {
+			isa = PBXGroup;
+			children = (
+				F88436742371B7F2E55FF026 /* ColoredCardDataSource.swift */,
+				F8843DBF7EBD6E5E9AD06DDF /* ColoredCardItem.swift */,
+			);
+			path = CollectionViewDataSource;
 			sourceTree = "<group>";
 		};
 		F8843A66A5BAF5419044D5D2 /* SimplePaint */ = {
@@ -93,32 +139,24 @@
 			children = (
 				F8843D1CB3627EEB694FD5E3 /* LaunchScreen.storyboard */,
 				F88430C1CBE666002E779F36 /* Supporting Files */,
-				F88434CFD74D5BCDE752F64F /* ViewControllers */,
-				F88434C04037C1488ABD9D0B /* Models */,
-				F88430F80C0A84D5AD6328CD /* ViewModels */,
+				F88434CFD74D5BCDE752F64F /* Scenes */,
+				F88434C04037C1488ABD9D0B /* Features */,
 				F88431B5C36019E7B6967FFD /* App */,
-				F8843D74DB1ECEE63B82E002 /* Views */,
 				F8843E7245F92546817EE3F9 /* Extensions */,
 			);
 			path = SimplePaint;
 			sourceTree = "<group>";
 		};
-		F8843ADBDC808D3FEBAA3D66 /* CollectionViewDataSource */ = {
+		F8843BA36041DBDAFFF18039 /* DrawServices */ = {
 			isa = PBXGroup;
 			children = (
-				F884327AA6CFC3AD4A55D93A /* ColoredCardDataSource.swift */,
-				F8843B630B95B11C1F83CE5A /* ColoredCardItem.swift */,
+				F8843B408A464C1D04D2703E /* CircleDrawService.swift */,
+				F88430F91B6D8B2C67A5461C /* LineDrawService.swift */,
+				F88430BE71FAAB0399CA19C5 /* PencilDrawService.swift */,
+				F88432CD1D1BA2C1C4C10C3D /* RectDrawService.swift */,
+				F8843C7C026690320274E263 /* TriangleDrawService.swift */,
 			);
-			path = CollectionViewDataSource;
-			sourceTree = "<group>";
-		};
-		F8843D74DB1ECEE63B82E002 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				F884344545A00075C527357A /* DrawTools.swift */,
-				F8843DF78C6E19D3F1D85347 /* DrawCanvas.swift */,
-			);
-			path = Views;
+			path = DrawServices;
 			sourceTree = "<group>";
 		};
 		F8843DBFD23DEA9E5B3FE7F5 = {
@@ -216,13 +254,23 @@
 			files = (
 				F8843B0BE6924D38D33788B4 /* AppDelegate.swift in Sources */,
 				F8843A0A50861390B3CE8ED4 /* SceneDelegate.swift in Sources */,
-				F8843A3A89ADA7E229CC1FE9 /* ViewController.swift in Sources */,
-				F8843F3CE3A90910F6A918F2 /* ColoredCardDataSource.swift in Sources */,
-				F88438B5C9445894B5557775 /* ColoredCardItem.swift in Sources */,
 				F8843237178DA577F757CCCF /* UIColor+ ext.swift in Sources */,
-				F8843DF9E15868EE98850F67 /* DrawTools.swift in Sources */,
 				F8843756DEDC9F959FA5A3E6 /* UIStackView+ext.swift in Sources */,
-				F88437AFBBE1E8A8EE1C9762 /* DrawCanvas.swift in Sources */,
+				F884308DE00708EC08CDDEE2 /* ViewController.swift in Sources */,
+				F8843DF57A65B6649416498C /* ColoredCardDataSource.swift in Sources */,
+				F88432957EA044B34E987CDF /* ColoredCardItem.swift in Sources */,
+				F8843A0B100D87F1D9EF17F8 /* DrawTools.swift in Sources */,
+				F8843E515AB6A1CD4593263E /* DrawCanvas.swift in Sources */,
+				F8843E3B226DFC14688A6C0B /* PencilDrawable.swift in Sources */,
+				F884392EE97AA1177531284D /* TriangleDrawable.swift in Sources */,
+				F88435EF4D2953546FFF864E /* RectDrawable.swift in Sources */,
+				F884301F02F6314211DCF026 /* LineDrawable.swift in Sources */,
+				F8843EE3C869191AA00BDE1A /* CircleDrawable.swift in Sources */,
+				F88436286F44C9B6402370B0 /* CircleDrawService.swift in Sources */,
+				F8843416BC6BC16F2ECA7298 /* LineDrawService.swift in Sources */,
+				F8843645DF45BDA1834C9217 /* PencilDrawService.swift in Sources */,
+				F88434898999165ED82A7110 /* RectDrawService.swift in Sources */,
+				F884393522BB77F61D607DB2 /* TriangleDrawService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
