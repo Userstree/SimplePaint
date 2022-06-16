@@ -8,6 +8,8 @@ protocol Drawable {
     func drawCurve(firstPoint: CGPoint, finalPoint: CGPoint, path:inout UIBezierPath) -> UIBezierPath
 }
 
+typealias DrawCallback = () -> Void
+
 class ViewModel {
 
     var allColorsForCards: [UIColor] = [.blue, .red, .green, .orange, .gray, .black]
@@ -15,23 +17,29 @@ class ViewModel {
     lazy var lineColor: UIColor = .black
     var curveType: DrawTools = .pencilButton
     var isFilled: Bool = false
-    var drawnLines = Observed<[DrawnObject]>([])
+    var drawnLines = [DrawnObject]()
+    var bindViewModel: DrawCallback?
 
     func appendCurve(firstPoint: CGPoint) {
-        drawnLines.value.append(DrawnObject(color: lineColor, points: [ (firstPoint, firstPoint) ], drawingTool: curveType, isFilled: isFilled))
+        drawnLines.append(DrawnObject(color: lineColor, points: [ PointsPair(first: firstPoint, last: firstPoint) ], drawingTool: curveType, isFilled: isFilled))
     }
 
     func undo() {
-        _ = drawnLines.value.popLast()
+        _ = drawnLines.popLast()
+        bindViewModel?()
     }
 
     func makeCurve() {
-        drawnLines.value.forEach { object in
+        drawnLines.forEach { object in
 
             object.color.setStroke()
 
-            object.points.forEach {  first, last in
+            object.points.forEach {  pair in
+
+                let first = pair.first
+                let last = pair.last
                 var path = UIBezierPath()
+
                 switch object.drawingTool {
                 case .pencilButton:
                     drawCurve(buttonType: .pencilButton, firstPoint: first, finalPoint: last, path: &path)
@@ -57,6 +65,6 @@ class ViewModel {
     }
 
     func drawCurve(buttonType: DrawTools, firstPoint: CGPoint, finalPoint: CGPoint, path: inout UIBezierPath) {
-        let path = buttonType.drawCurve(firstPoint: firstPoint, finalPoint: finalPoint, path: &path)
+        buttonType.drawCurve(firstPoint: firstPoint, finalPoint: finalPoint, path: &path)
     }
 }

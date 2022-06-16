@@ -20,7 +20,12 @@ class DrawCanvas: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
-        viewModel.drawnLines.bind { [weak self] _ in
+//        viewModel.drawnLines.bind { [weak self] _ in
+//            guard let self = self else { return }
+//            self.setNeedsDisplay()
+//        }
+
+        viewModel.bindViewModel = { [weak self] in
             guard let self = self else { return }
             self.setNeedsDisplay()
         }
@@ -47,16 +52,16 @@ class DrawCanvas: UIView {
 
         guard var last = touches.first?.location(in: nil) else { return }
         last.y -= 105
-        guard var lastObject = viewModel.drawnLines.value.popLast() else { return }
+        guard var lastObject = viewModel.drawnLines.popLast() else { return }
         guard var endPoint = lastObject.points.popLast() else { return }
 
-        endPoint.1 = last
+        endPoint.last = last
         lastObject.points.append(endPoint)
 
         if lastObject.drawingTool == .pencilButton {
-            lastObject.points.append((last, last))
+            lastObject.points.append(PointsPair(first: last, last: last))
         }
-        viewModel.drawnLines.value.append(lastObject)
+        viewModel.drawnLines.append(lastObject)
         setNeedsDisplay()
     }
 }

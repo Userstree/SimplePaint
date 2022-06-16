@@ -23,7 +23,6 @@
 		F884393522BB77F61D607DB2 /* TriangleDrawService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8843C7C026690320274E263 /* TriangleDrawService.swift */; };
 		F8843A0A50861390B3CE8ED4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88438F64FF2E170ABBA2F12 /* SceneDelegate.swift */; };
 		F8843A0B100D87F1D9EF17F8 /* DrawTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88433A588E4AB35A45D91E0 /* DrawTools.swift */; };
-		F8843A6C9AF58E39B868DD6F /* Observed.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8843637BDA14928E96590C4 /* Observed.swift */; };
 		F8843B0BE6924D38D33788B4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8843A5311EF7E7079186D3B /* AppDelegate.swift */; };
 		F8843D54CB2FF032C7A3641B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88437B506F63554D6D582A9 /* Assets.xcassets */; };
 		F8843DDDA17A50724E45E22E /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88436B2BDE4D680343D5E66 /* ViewModel.swift */; };
@@ -42,7 +41,6 @@
 		F88432CD1D1BA2C1C4C10C3D /* RectDrawService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectDrawService.swift; sourceTree = "<group>"; };
 		F88432DA4C6BD552D9D936E0 /* RectDrawable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RectDrawable.swift; sourceTree = "<group>"; };
 		F88433A588E4AB35A45D91E0 /* DrawTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawTools.swift; sourceTree = "<group>"; };
-		F8843637BDA14928E96590C4 /* Observed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Observed.swift; sourceTree = "<group>"; };
 		F88436742371B7F2E55FF026 /* ColoredCardDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColoredCardDataSource.swift; sourceTree = "<group>"; };
 		F884367618BA4AFBD1F56FF2 /* DrawCanvas.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrawCanvas.swift; sourceTree = "<group>"; };
 		F88436782F5757E3D7FA2D7C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -199,7 +197,6 @@
 			isa = PBXGroup;
 			children = (
 				F8843C6B762EFD5653D1D98A /* DrawnObject.swift */,
-				F8843637BDA14928E96590C4 /* Observed.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -294,7 +291,6 @@
 				F8843DDDA17A50724E45E22E /* ViewModel.swift in Sources */,
 				F88436A03D03B64A71809152 /* Factory.swift in Sources */,
 				F8843395056EAB45B2A07FB2 /* DrawnObject.swift in Sources */,
-				F8843A6C9AF58E39B868DD6F /* Observed.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

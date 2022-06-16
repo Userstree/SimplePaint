@@ -4,9 +4,14 @@
 
 import UIKit
 
+struct PointsPair {
+    var first: CGPoint
+    var last: CGPoint
+}
+
 struct DrawnObject {
     let color: UIColor
-    var points: [(CGPoint, CGPoint)]
+    var points: [PointsPair]
     let drawingTool: DrawTools
     let isFilled: Bool
 }

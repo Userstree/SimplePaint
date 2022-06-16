@@ -59,6 +59,8 @@ extension DrawTools {
 }
 
 extension  DrawTools: Drawable {
+
+    @discardableResult
     func drawCurve(firstPoint: CGPoint, finalPoint: CGPoint, path:inout UIBezierPath) -> UIBezierPath {
         switch self {
         case .pencilButton:
@@ -83,7 +85,10 @@ extension  DrawTools: Drawable {
             return path
 
         case .rectangleButton:
-            path = UIBezierPath(rect: CGRect(x: firstPoint.x, y: firstPoint.y, width: finalPoint.x - firstPoint.x, height: finalPoint.y - firstPoint.y))
+            path = UIBezierPath(rect: CGRect(x: firstPoint.x,
+                                             y: firstPoint.y,
+                                             width: finalPoint.x - firstPoint.x,
+                                             height: finalPoint.y - firstPoint.y))
             return path
 
         case .lineButton:
