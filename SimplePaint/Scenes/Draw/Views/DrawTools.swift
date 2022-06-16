@@ -19,13 +19,13 @@ extension DrawTools {
             let button = UIButton()
             button.translatesAutoresizingMaskIntoConstraints = false
             button.tintColor = .black
-            button.setImage(UIImage(systemName: "circle.fill"), for: .normal)
+            button.setImage(UIImage(systemName: "circle"), for: .normal)
             button.imageView?.layer.transform = CATransform3DMakeScale(2.0, 2.0, 2.0)
             return button
 
         case .rectangleButton:
             let button = UIButton()
-            button.setImage(UIImage(systemName: "rectangle.fill"), for: .normal)
+            button.setImage(UIImage(systemName: "rectangle"), for: .normal)
             button.translatesAutoresizingMaskIntoConstraints = false
             button.tintColor = .black
             button.imageView?.layer.transform = CATransform3DMakeScale(2.0, 2.0, 2.0)
@@ -33,7 +33,7 @@ extension DrawTools {
 
         case .triangleButton:
             let button = UIButton()
-            button.setImage(UIImage(systemName: "triangle.fill"), for: .normal)
+            button.setImage(UIImage(systemName: "triangle"), for: .normal)
             button.translatesAutoresizingMaskIntoConstraints = false
             button.tintColor = .black
             button.imageView?.layer.transform = CATransform3DMakeScale(2.0, 2.0, 2.0)

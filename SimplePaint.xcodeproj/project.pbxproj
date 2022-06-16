@@ -93,7 +93,7 @@
 			path = App;
 			sourceTree = "<group>";
 		};
-		F88431C254E9D532C1264187 /* One */ = {
+		F88431C254E9D532C1264187 /* Draw */ = {
 			isa = PBXGroup;
 			children = (
 				F884330AB77E43E9C2BA37D0 /* Views */,
@@ -102,7 +102,7 @@
 				F88436B2BDE4D680343D5E66 /* ViewModel.swift */,
 				F8843D4BD6BFF4D1C296F322 /* Factory.swift */,
 			);
-			path = One;
+			path = Draw;
 			sourceTree = "<group>";
 		};
 		F884330AB77E43E9C2BA37D0 /* Views */ = {
@@ -130,7 +130,7 @@
 		F88434CFD74D5BCDE752F64F /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				F88431C254E9D532C1264187 /* One */,
+				F88431C254E9D532C1264187 /* Draw */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";

@@ -8,14 +8,6 @@ protocol Drawable {
     func drawCurve(firstPoint: CGPoint, finalPoint: CGPoint, path:inout UIBezierPath) -> UIBezierPath
 }
 
-extension Drawable {
-    func drawCurve(firstPoint: CGPoint, finalPoint: CGPoint, path: inout UIBezierPath) -> UIBezierPath {
-        path.move(to: firstPoint)
-        path.addLine(to: finalPoint)
-        return path
-    }
-}
-
 class ViewModel {
 
     var allColorsForCards: [UIColor] = [.blue, .red, .green, .orange, .gray, .black]
@@ -23,11 +15,9 @@ class ViewModel {
     lazy var lineColor: UIColor = .black
     var curveType: DrawTools = .pencilButton
     var isFilled: Bool = false
-    var lines = [DrawnObject]()
     var drawnLines = Observed<[DrawnObject]>([])
 
     func appendCurve(firstPoint: CGPoint) {
-        lines.append(DrawnObject(color: lineColor, points: [ (firstPoint, firstPoint) ], drawingTool: curveType, isFilled: isFilled))
         drawnLines.value.append(DrawnObject(color: lineColor, points: [ (firstPoint, firstPoint) ], drawingTool: curveType, isFilled: isFilled))
     }
 
@@ -36,35 +26,6 @@ class ViewModel {
     }
 
     func makeCurve() {
-        lines.forEach { object in
-
-            object.color.setStroke()
-
-            object.points.forEach {  first, last in
-                var path = UIBezierPath()
-                switch object.drawingTool {
-                case .pencilButton:
-                    drawCurve(buttonType: .pencilButton, firstPoint: first, finalPoint: last, path: &path)
-                case .circleButton:
-                    drawCurve(buttonType: .circleButton, firstPoint: first, finalPoint: last, path: &path)
-                case .triangleButton:
-                    drawCurve(buttonType: .triangleButton, firstPoint: first, finalPoint: last, path: &path)
-                case .lineButton:
-                    drawCurve(buttonType: .lineButton, firstPoint: first, finalPoint: last, path: &path)
-                case .rectangleButton:
-                    drawCurve(buttonType: .rectangleButton, firstPoint: first, finalPoint: last, path: &path)
-                }
-
-                if object.isFilled {
-                    object.color.setFill()
-                    path.fill()
-                }
-
-                path.lineWidth = 2
-                path.stroke()
-            }
-        }
-
         drawnLines.value.forEach { object in
 
             object.color.setStroke()

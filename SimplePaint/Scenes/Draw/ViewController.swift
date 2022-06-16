@@ -41,7 +41,7 @@ class ViewController: UIViewController {
         return stack
     }()
 
-    private var filledLabel: UILabel = {
+    private let filledLabel: UILabel = {
         let label = UILabel()
         label.text = "Fill"
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -63,7 +63,7 @@ class ViewController: UIViewController {
         return stack
     }()
 
-    private var colorsCollectionView: UICollectionView = {
+    private let colorsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
 
@@ -74,7 +74,7 @@ class ViewController: UIViewController {
         return collectionView
     }()
 
-    private var undoButton: UIButton = {
+    private let undoButton: UIButton = {
         let button = UIButton()
         button.setImage(UIImage(systemName: "arrow.uturn.backward"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -82,7 +82,7 @@ class ViewController: UIViewController {
         return button
     }()
 
-    private var upperHStack: UIStackView = {
+    private let upperHStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .horizontal
         stack.distribution = .fillProportionally
@@ -176,7 +176,6 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         allColorsForCards.count
     }

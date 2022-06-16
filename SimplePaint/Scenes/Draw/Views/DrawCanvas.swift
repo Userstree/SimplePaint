@@ -20,6 +20,11 @@ class DrawCanvas: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
 
+        viewModel.drawnLines.bind { [weak self] _ in
+            guard let self = self else { return }
+            self.setNeedsDisplay()
+        }
+
         backgroundColor = .sheetBackgroundColor
     }
 
