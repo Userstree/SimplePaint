@@ -17,11 +17,11 @@ class ColoredCardItem: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    var card: UIButton = {
-        let button = UIButton()
-        button.layer.cornerRadius = 6
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
+    var card: UIView = {
+        let view = UIView()
+        view.layer.cornerRadius = 6
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
 
     private func configureViews() {

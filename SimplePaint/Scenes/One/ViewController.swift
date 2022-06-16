@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var allColorsForCards: [UIColor] = [.blue, .red, .green, .orange, .gray, .black]
+
     var viewModel: ViewModel
 
     init(viewModel: ViewModel) {
@@ -46,9 +48,10 @@ class ViewController: UIViewController {
         return label
     }()
 
-    private var isFilledToggle: UISwitch = {
+    private lazy var isFilledToggle: UISwitch = {
         let toggle = UISwitch(frame: .zero)
         toggle.isOn = false
+        toggle.addTarget(self, action: #selector(isFilledToggleTapped), for: .valueChanged)
         toggle.translatesAutoresizingMaskIntoConstraints = false
         return toggle
     }()
@@ -112,6 +115,14 @@ class ViewController: UIViewController {
         viewModel.curveType = .triangleButton
     }
 
+    @objc private func isFilledToggleTapped() {
+        if isFilledToggle.isOn {
+            viewModel.isFilled = true
+        } else {
+            viewModel.isFilled = false
+        }
+    }
+
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesEnded(touches, with: event)
     }
@@ -126,7 +137,7 @@ class ViewController: UIViewController {
         colorsCollectionView.delegate = self
         colorsCollectionView.dataSource = self
 
-        circleButton.addTarget(self, action: #selector(pencilButtonTapped), for: .touchUpInside)
+        pencilButton.addTarget(self, action: #selector(pencilButtonTapped), for: .touchUpInside)
         rectangleButton.addTarget(self, action: #selector(rectButtonTapped), for: .touchUpInside)
         circleButton.addTarget(self, action: #selector(circleButtonTapped), for: .touchUpInside)
         lineButton.addTarget(self, action: #selector(lineButtonTapped), for: .touchUpInside)
@@ -166,14 +177,18 @@ class ViewController: UIViewController {
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        viewModel.allColorsForCards.count
+        allColorsForCards.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ColoredCardItem.identifier, for: indexPath) as! ColoredCardItem
-        let cardBackgroundColor = viewModel.allColorsForCards[indexPath.item]
+        let cardBackgroundColor = allColorsForCards[indexPath.item]
         cell.configure(with: cardBackgroundColor)
         return cell
+    }
+
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel.lineColor = allColorsForCards[indexPath.row]
     }
 }
 

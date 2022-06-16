@@ -19,7 +19,7 @@ extension Drawable {
 struct DrawnObject {
     let color: UIColor
     var points: [(CGPoint, CGPoint)]
-    let buttonType: DrawTools
+    let drawingTool: DrawTools
     let isFilled: Bool
 }
 
@@ -28,7 +28,7 @@ class ViewModel: Drawable {
     var allColorsForCards: [UIColor] = [.blue, .red, .green, .orange, .gray, .black]
 
     var bezierPath: UIBezierPath?
-    var lineColor: UIColor = .black
+    lazy var lineColor: UIColor = .black
     var curveType: DrawTools = .pencilButton
     var isFilled: Bool = false
     var lines = [DrawnObject]()
@@ -38,8 +38,38 @@ class ViewModel: Drawable {
         bezierPath?.append(path)
     }
 
-    func appendCurve() {
-        lines.append(Object(color: objectColor, points: [(first, CGPoint())], buttonType: shapeType, isFilled: isFilled))
-        lines.append(DrawnObject(color: color, points: <#T##[(CGPoint, CGPoint)]##[(CoreGraphics.CGPoint, CoreGraphics.CGPoint)]#>, buttonType: <#T##DrawTools##SimplePaint.DrawTools#>, isFilled: <#T##Bool##Swift.Bool#>))
+    func appendCurve(firstPoint: CGPoint) {
+        lines.append(DrawnObject(color: lineColor, points: [ (firstPoint, CGPoint()) ], drawingTool: curveType, isFilled: isFilled))
+    }
+
+    func makeCurve() {
+        lines.forEach { object in
+
+            object.color.setStroke()
+
+            object.points.forEach {  first, last in
+                var path = UIBezierPath()
+                switch object.drawingTool {
+                case .pencilButton:
+                    drawCurve(buttonType: .pencilButton, firstPoint: first, finalPoint: last, path: &path)
+                case .circleButton:
+                    drawCurve(buttonType: .circleButton, firstPoint: first, finalPoint: last, path: &path)
+                case .triangleButton:
+                    drawCurve(buttonType: .triangleButton, firstPoint: first, finalPoint: last, path: &path)
+                case .lineButton:
+                    drawCurve(buttonType: .lineButton, firstPoint: first, finalPoint: last, path: &path)
+                case .rectangleButton:
+                    drawCurve(buttonType: .rectangleButton, firstPoint: first, finalPoint: last, path: &path)
+                }
+
+                if object.isFilled {
+                    object.color.setFill()
+                    path.fill()
+                }
+
+                path.lineWidth = 2
+                path.stroke()
+            }
+        }
     }
 }
